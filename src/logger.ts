@@ -10,13 +10,17 @@ const loggerOpts = {
 };
 
 const localLoggerOpts = {
+  // keep synchronous logging behavior similar to previous setup
   sync: true,
-  prettyPrint: {
-    levelFirst: true,
-    colorize: true,
-    messageFormat: '{msg}',
-    translateTime: 'yyyy-mm-dd"T"HH:MM:ss.l"Z"',
-    ignore: 'hostname,pid',
+  transport: {
+    target: "pino-pretty",
+    options: {
+      levelFirst: true,
+      colorize: true,
+      messageFormat: "{msg}",
+      translateTime: 'yyyy-mm-dd"T"HH:MM:ss.l"Z"',
+      ignore: "hostname,pid",
+    },
   },
 };
 
