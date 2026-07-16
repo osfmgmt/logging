@@ -1,5 +1,5 @@
-import { createLogger, OsfLogger } from '../dist/logger';
-import { Logger } from '../dist';
+import { createLogger, OsfLogger } from '../src/logger';
+import { Logger } from '../src';
 
 describe('Logger creation', function () {
   let logger: Logger;

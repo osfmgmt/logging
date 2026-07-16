@@ -1,7 +1,5 @@
-import getCallerFile from 'get-caller-file';
 import Pino, { stdTimeFunctions } from 'pino';
 
-import { getLoggerNameFromPath } from './util';
 import { Logger, Level, CreateLoggerOpts, DEFAULT_LEVEL } from './types';
 
 const loggerOpts = {
@@ -70,10 +68,10 @@ export class OsfLogger implements Logger {
 }
 
 export function createLogger(opts?: CreateLoggerOpts): Logger {
-  const { name, level, local } = opts || {};
+  const { name = 'app', level, local } = opts || {};
   return new OsfLogger(
-    name || getLoggerNameFromPath(getCallerFile()),
+    name,
     level || (process.env.LOG_LEVEL as Level) || DEFAULT_LEVEL,
-    local || !!process.env.LOCAL,
+    local ?? !!process.env.LOCAL,
   );
 }
